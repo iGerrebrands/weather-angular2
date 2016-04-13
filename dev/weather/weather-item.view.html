@@ -1,0 +1,10 @@
+<article class="weather-element" (click)="onClick()">
+    <div [ngClass]="{col1active: clicked, col1: !clicked}">
+        <h3>{{weatherItem.cityName}}</h3>
+        <p *ngIf="clicked" class="info">{{weatherItem.desc}}</p>
+    </div>
+    <div *ngIf="clicked" class="col-2">
+        <span  class="temperature">{{weatherItem.temp}}°C</span>
+        <p (click)="onRemove()">Remove</p>
+    </div>
+</article>

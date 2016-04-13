@@ -1,20 +1,25 @@
-import {Component} from 'angular2/core';
+import {Component, Input} from 'angular2/core';
+import {WeatherItem} from "./weather-item";
+import {WeatherService} from "./weather.service";
 
 @Component({
     selector: 'weather-item',
-    template: `
-        <article class="weather-element">
-            <div class="col-1">
-                <h3>Cityname</h3>
-                <p class="info">CLOUDS</p>
-            </div>
-            <div class="col-2">
-                <span class="temperature">32°C</span>
-            </div>
-        </article>
-    `,
-    styleUrls: ['src/css/weather-item.css']
+    templateUrl: './dev/weather/weather-item.view.html',
+    styleUrls: ['src/css/weather-item.css'],
 })
+
 export class WeatherItemComponent {
-    
+
+    @Input() weatherItem: WeatherItem;
+    clicked: boolean = false;
+
+    constructor(private weatherService: WeatherService){}
+
+    onClick() {
+        this.clicked = !this.clicked;
+    }
+
+    onRemove() {
+        this.weatherService.deleteItem(this.weatherItem);
+    }
 }

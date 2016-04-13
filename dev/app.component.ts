@@ -3,13 +3,11 @@ import {WeatherListComponent} from "./weather/weather-list.component";
 
 @Component({
     selector: 'my-app',
-    template: `
-        <header>
-            <h1>Angular 2 Weather</h1>
-        </header>
-        <weather-list></weather-list>
-    `,
+    templateUrl: './dev/app.view.html',
     directives: [WeatherListComponent]
 })
+
 export class AppComponent {
+
+
 }
